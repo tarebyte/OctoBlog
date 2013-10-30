@@ -25,4 +25,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test do
+  gem 'selenium-webdriver'
+  gem 'capybara'
+end
+
 gem 'rails_12factor', group: :production
