@@ -9,4 +9,20 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-OctoBlog::Application.config.secret_key_base = 'ac58a7a31f1d42d929e7350fac77d8c11f931c1475b06c8e7e145f6a8768ab87a5907d63571d4b180aeb3294dc066aaf2ab381bacd7a0361d28ed79d50a52ea3'
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exists?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+OctoBlog::Application.config.secret_key_base = secure_token
