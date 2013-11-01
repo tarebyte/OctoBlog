@@ -1,0 +1,6 @@
+<h1>5Devs OctoBlog</h1>
+<% if current_user %>
+  <%= link_to current_user.name, current_user %>
+<% else %>
+  <%= link_to 'Sign In', '/auth/github/' %>
+<% end %>

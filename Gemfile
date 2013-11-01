@@ -11,6 +11,9 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'bcrypt-ruby'
 
 group :development, :test do
   gem 'awesome_print'
@@ -31,3 +34,4 @@ group :test do
 end
 
 gem 'rails_12factor', group: :production
+gem 'dotenv-rails', groups: [:development, :test]
