@@ -1,0 +1,13 @@
+language: ruby
+services: postgresql
+rvm:
+  - 2.0.0
+before_script:
+  - psql -c 'create database cwdg_rails_test;' -U postgres
+notifications:
+  email:
+    - tarebyte@gmail.com
+    - mill.brandont@gmail.com
+    - pnguyen1097@gmail.com
+    - evanschaffner@hotmail.com
+    - jain.242@osu.edu
