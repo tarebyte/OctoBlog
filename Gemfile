@@ -3,17 +3,20 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.0.0'
 
-gem 'pg'
 
-gem 'sass-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'bcrypt-ruby'
+gem 'bootstrap-sass', '~> 3.0.1.0.rc'
+gem 'bootswatch-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'mongoid'
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'bcrypt-ruby'
+gem 'pg'
+gem 'sass-rails', '~> 4.0.0'
+gem 'turbolinks'
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'awesome_print'
@@ -29,8 +32,9 @@ group :doc do
 end
 
 group :test do
-  gem 'selenium-webdriver'
   gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'selenium-webdriver'
 end
 
 gem 'rails_12factor', group: :production
