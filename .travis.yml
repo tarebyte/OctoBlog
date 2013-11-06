@@ -1,5 +1,7 @@
 language: ruby
-services: postgresql
+services:
+  - postgresql
+  - mongodb
 rvm:
   - 2.0.0
 before_script:
