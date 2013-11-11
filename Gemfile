@@ -24,6 +24,13 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'quiet_assets'
+
+
+  gem "spring", "~> 0.9.2"
+  gem "guard-bundler", "~> 2.0.0"
+  gem "guard-rails", "~> 0.4.7"
+  gem "guard-rspec", "~> 4.0.4"
+  gem "listen"
 end
 
 group :doc do
