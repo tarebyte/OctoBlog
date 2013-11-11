@@ -27,6 +27,7 @@ group :development, :test do
 
 
   gem "spring", "~> 0.9.2"
+  gem "spring-commands-rspec", "~> 1.0.1"
   gem "guard-bundler", "~> 2.0.0"
   gem "guard-rails", "~> 0.4.7"
   gem "guard-rspec", "~> 4.0.4"

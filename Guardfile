@@ -13,7 +13,7 @@ guard 'rails' do
 end
 
 
-guard :rspec, notification: true, spring: true do
+guard :rspec, notification: true, cmd: 'spring rspec -f doc' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
