@@ -1,4 +1,7 @@
 language: ruby
+services:
+  - postgresql
+  - mongodb
 rvm:
   - 2.0.0
 env:
