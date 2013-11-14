@@ -1,0 +1,17 @@
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-8'>
+            <form>
+                <textarea id='trevor'></textarea>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    stInstance = new SirTrevor.Editor({
+        el: $('#trevor'),
+        blockTypes: ["Text", "Heading", "Image", "List"],
+        required: ["Text"]
+    });
+
+</script>
