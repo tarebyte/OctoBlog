@@ -1,0 +1,13 @@
+$footer_height: 180px;
+
+html, body {height: 100%;}
+
+#wrap {min-height: 100%;}
+
+#main {overflow:auto;
+	padding-bottom: $footer_height;}
+
+#footer {position: relative;
+	margin-top: -$footer_height;
+	height: $footer_height;
+	clear:both;}
