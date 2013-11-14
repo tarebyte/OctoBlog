@@ -4,5 +4,7 @@ $font-family-sans-serif: "Open Sans", 'Helvetica Neue', Helvetica, Arial, sans-s
 
 @import "bootstrap";
 
-//@import "bootstrap/responsive";
+body {
+    background-image: image-url("knitting250px.png");
+}
 

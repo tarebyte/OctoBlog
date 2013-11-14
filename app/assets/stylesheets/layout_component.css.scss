@@ -2,6 +2,7 @@
     .jumbotron {
         padding-top: 1em;
 	padding-bottom: 1em;
+	margin-bottom: 0;
     }
     h1 {
         font-size: 1.5em;
@@ -9,5 +10,23 @@
     }
     p {
         font-size: .75em;
+    }
+    border-bottom: 1px solid #ddd;
+}
+.content_wrapper {
+    @include make-md-column(8);
+    background-color: #FFF;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.blog_content {
+    @include make-md-column(11);
+    h2 {
+        line-height: 0.75;
+        small {
+	    &::before { @extend .fa; padding-right: .5em; }
+            @extend .fa-calendar;
+            font-size: .5em;
+        }
     }
 }
