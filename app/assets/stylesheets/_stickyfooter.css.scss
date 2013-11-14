@@ -1,13 +1,33 @@
-$footer_height: 180px;
+$footer_height: 2 * $line-height-computed;
 
 html, body {height: 100%;}
 
 #wrap {min-height: 100%;}
 
-#main {overflow:auto;
-	padding-bottom: $footer_height;}
+#main {
+    overflow:auto;
+    padding-bottom: $footer_height;
+}
 
-#footer {position: relative;
-	margin-top: -$footer_height;
-	height: $footer_height;
-	clear:both;}
+footer {
+    position: relative;
+    margin-top: -$footer_height;
+    height: $footer_height;
+    clear:both;
+}
+
+footer {
+    line-height: $footer_height;
+    background-color: $navbar-default-bg;
+    color: $navbar-default-color;
+    border-top: 1px solid $navbar-default-border;
+
+    #copyright_message {
+        @include make-md-column(6);
+    }
+
+    #footer_links {
+        @include make-md-column(6);
+        text-align: right;
+    }
+}

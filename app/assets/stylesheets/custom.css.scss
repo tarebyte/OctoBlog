@@ -1,10 +1,21 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,700,700italic);
 @import "font-awesome";
-$font-family-sans-serif: "Open Sans", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+@import "_variables";
 
 @import "bootstrap";
 
+// Base styles
+// --------------------------
+
 body {
     background-image: image-url("knitting250px.png");
+}
+
+// No underline for links in headings
+h1, h2, h3, h4, h5, h6 {
+    a:hover {
+        text-decoration: none;
+    }
 }
 
