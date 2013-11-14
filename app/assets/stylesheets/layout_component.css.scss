@@ -30,3 +30,15 @@
         }
     }
 }
+.sidebar {
+    @include make-md-column(4);
+    padding-top: 2em;
+    padding-left: $grid-gutter-width;
+    h2 {
+        font-size: $font-size-base * 1.25;
+	font-weight: bold;
+    }
+    ul {
+        @extend .list-unstyled;
+    }
+}
