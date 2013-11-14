@@ -1,0 +1,44 @@
+.header {
+    .jumbotron {
+        padding-top: 1em;
+	padding-bottom: 1em;
+	margin-bottom: 0;
+    }
+    h1 {
+        font-size: 1.5em;
+	font-weight: 300;
+    }
+    p {
+        font-size: .75em;
+    }
+    border-bottom: 1px solid #ddd;
+}
+.content_wrapper {
+    @include make-md-column(8);
+    background-color: #FFF;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.blog_content {
+    @include make-md-column(11);
+    h2 {
+        line-height: 0.75;
+        small {
+	    &::before { @extend .fa; padding-right: .5em; }
+            @extend .fa-calendar;
+            font-size: .5em;
+        }
+    }
+}
+.sidebar {
+    @include make-md-column(4);
+    padding-top: 2em;
+    padding-left: $grid-gutter-width;
+    h2 {
+        font-size: $font-size-base * 1.25;
+	font-weight: bold;
+    }
+    ul {
+        @extend .list-unstyled;
+    }
+}
