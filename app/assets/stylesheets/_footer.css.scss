@@ -1,0 +1,8 @@
+#copyright_message {
+    @include make-md-column(6);
+    }
+
+#footer_links {
+    @include make-md-column(6);
+    text-align: right;
+    }  
