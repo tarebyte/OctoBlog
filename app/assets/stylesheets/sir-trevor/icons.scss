@@ -81,6 +81,26 @@ a[data-type="video"] {
 }
 
 /**
+ * Large icon
+ */
+div[data-type] {
+    .st-block__inputs .st-icon {
+        &::before {
+            @extend .fa;
+            display: block;
+        }
+        height: 1em;
+        overflow: hidden;
+    }
+}
+
+div[data-type="image"] {
+    .st-block__inputs .st-icon {
+        @extend .fa-picture-o;
+    }
+}
+
+/**
  * Formatter icons
  */
 button.st-format-btn {
