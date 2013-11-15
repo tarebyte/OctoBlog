@@ -3,19 +3,37 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	<span class="sr-only">Toggle navigation</span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">OctoBlog</a>
+      <%= link_to "OctoBlog", root_path, class: 'navbar-brand' %>
     </div>
-    
+
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-	<li><a href="#"><i class='fa fa-user'></i> EvanSchaffner</a></li>
-	<li><a href="#">Sign Out <i class='fa fa-sign-out'></i></a></li>
+        <% if current_user %>
+          <li>
+            <%= link_to user_path(current_user) do %>
+              <%= fa_icon "user", text: "#{current_user.name}" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to signout_path do %>
+              Sign Out
+              <%= fa_icon "sign-out" %>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to '/auth/github/' do %>
+              Sign In
+              <%= fa_icon "sign-in" %>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
