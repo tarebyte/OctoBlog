@@ -44,6 +44,12 @@ $padding-small-vertical:         5px;
 $padding-small-horizontal:       10px;
 
 
+// Grid
+// -------------------------
+// Use smaller grid size even for large desktop
+$grid-gutter-width: 30px;
+$container-lg: ((980px + $grid-gutter-width));
+
 // Navbar
 // -------------------------
 
