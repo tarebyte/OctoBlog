@@ -7,8 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="wrap">
+    <div id="main">
+      <%= render :partial => "layouts/navbar" %>
+      <%= yield %>
+    </div>
+  </div>
 
-<%= yield %>
+  <footer>
+    <div class="container">
+      <div class="row">
+	<div id="copyright_message">
+	  &copy; 2013 5Devs. All rights reserved.
+	</div>
+	<div id="footer_links">
+	  Here are some links.
+	</div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

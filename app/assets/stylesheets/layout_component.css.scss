@@ -1,0 +1,56 @@
+.header {
+    .jumbotron {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        margin-bottom: 0;
+        border-bottom: 1px solid $navbar-default-border;
+    }
+    h1 {
+        font-size: 1.5em;
+        font-weight: 300;
+    }
+    p {
+        font-size: .75em;
+    }
+    border-bottom: 1px solid #ddd;
+}
+
+.main_content {
+    @include make-md-column(9);
+    background-color: #FFF;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.sidebar {
+    @include make-md-column(3);
+    padding-top: 2em;
+    padding-left: $grid-gutter-width;
+    h2 {
+        font-size: $font-size-base * 1.25;
+        font-weight: bold;
+    }
+    ul {
+        @extend .list-unstyled;
+    }
+}
+
+// Blog post styling
+
+.blog_post {
+    margin-bottom: 3 * $font-size-base;
+}
+
+.blog_heading {
+    line-height: 1;
+    margin-bottom: 1.5 * $font-size-base;
+
+    small {
+        &::before { @extend .fa;}
+        @extend .fa-calendar;
+        font-size: $font-size-h6;
+        line-height: 1.5;
+        display: block;
+    }
+}
+

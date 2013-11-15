@@ -17,6 +17,8 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
+gem "font-awesome-rails", "~> 4.0.3.0"
+
 group :development, :test do
   gem 'awesome_print'
   gem 'better_errors'
@@ -24,6 +26,14 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'quiet_assets'
+
+
+  gem "spring", "~> 0.9.2"
+  gem "spring-commands-rspec", "~> 1.0.1"
+  gem "guard-bundler", "~> 2.0.0"
+  gem "guard-rails", "~> 0.4.7"
+  gem "guard-rspec", "~> 4.0.4"
+  gem "listen"
 end
 
 group :doc do

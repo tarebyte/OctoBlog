@@ -1,6 +1,8 @@
 OctoBlog::Application.routes.draw do
   root 'static_pages#home'
 
+  match '/pages/:page',             to: 'static_pages#show', via: :get
+
   match '/members',                 to: 'users#index',      via: :get
 
   match '/users/:id',               to: 'users#show',       as: :user,   via: :get

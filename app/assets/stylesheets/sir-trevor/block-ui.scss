@@ -1,0 +1,69 @@
+$block-ui-height: 2em;
+
+.st-block__ui,
+.st-block__ui-delete-controls {
+  position: absolute;
+  bottom: 0;  right: 0;
+  opacity: 0;
+  z-index: 10;
+}
+
+.st-block__inner:hover .st-block__ui {
+  opacity: 1;
+}
+
+.st-block-ui-btn {
+  display: block;
+  float: left;
+  width: $block-ui-height; height: $block-ui-height;
+  line-height: $block-ui-height;
+  font-size: 1em;
+  color: $accent-color;
+  background: #fff;
+  text-align: center;
+  border: 1px solid $accent-color;
+  border-right: 0;
+  border-bottom: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.st-block--with-errors .st-block-ui-btn ,
+.st-block--delete-active .st-block-ui-btn {
+  color: $error-color;
+  border-color: $error-color;
+}
+
+.st-block-ui-btn:hover {
+  color: #fff;
+  background: $accent-color;
+}
+
+.st-block--with-errors .st-block-ui-btn:hover,
+.st-block--delete-active .st-block-ui-btn:hover {
+  background-color: $error-color;
+}
+
+.st-block--delete-active .st-block__ui-delete-controls {
+  opacity: 1;
+  z-index: 11;
+}
+
+.st-block__delete-label {
+  display: block;
+
+  position: absolute;
+  height: $block-ui-height;
+  line-height: $block-ui-height;
+  bottom: 0;
+  right: 2 * $block-ui-height;
+  border: 1px solid $error-color;
+  border-bottom: none;
+  border-right: none;
+  text-align: center;
+  background: $error-color;
+  color: #fff;
+  padding: 0 1em;
+  margin: 0;
+  font-weight: normal;
+}
