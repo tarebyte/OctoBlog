@@ -94,6 +94,8 @@ GEM
     font-awesome-rails (4.0.3.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.4)
+    friendly_id (5.0.1)
+      activerecord (~> 4.0.0)
     guard (2.2.3)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -295,6 +297,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   font-awesome-rails (~> 4.0.3.0)
+  friendly_id (~> 5.0.1)
   guard-bundler (~> 2.0.0)
   guard-rails (~> 0.4.7)
   guard-rspec (~> 4.0.4)

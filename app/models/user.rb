@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :username, use: :slugged
 
   def self.from_omniauth(auth)
     where(auth.slice('provider', 'uid')).first || create_from_omniauth(auth)
@@ -10,6 +12,7 @@ class User < ActiveRecord::Base
       user.name     = auth['info']['name'] ? auth['info']['name'] : user.username
       user.provider = auth['provider']
       user.uid      = auth['uid']
+      user.slug     = user.username
     end
   end
 

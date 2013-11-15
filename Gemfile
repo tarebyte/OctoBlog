@@ -18,6 +18,7 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 gem "font-awesome-rails", "~> 4.0.3.0"
+gem "friendly_id", "~> 5.0.1"
 
 group :development, :test do
   gem 'awesome_print'
