@@ -18,4 +18,5 @@
 //= require eventable
 //= require sir-trevor
 //= require highlight.pack
+//= require marked
 //= require octoblog
