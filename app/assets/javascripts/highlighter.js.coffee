@@ -11,5 +11,7 @@ do (App = OctoBlog) ->
     #
     # Returns a string of HTML represents the highlighted code
     @highlight = (value) ->
+      console.log value
+      hljs.highlightAuto(value).value
 
   ).call(App.Highlighter)
