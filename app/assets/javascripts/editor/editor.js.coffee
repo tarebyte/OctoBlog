@@ -1,4 +1,3 @@
-//= require sir-trevor
 //= require_tree .
 
 # Editor Module
