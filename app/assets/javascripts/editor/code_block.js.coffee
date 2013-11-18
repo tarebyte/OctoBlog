@@ -13,7 +13,6 @@ SirTrevor.Blocks.Code = SirTrevor.Block.extend(
   loadData: (data) ->
     @$el.find('code').html(data.text)
 
-
   toData: ->
     @setData(
       "text": @$('code').text()
