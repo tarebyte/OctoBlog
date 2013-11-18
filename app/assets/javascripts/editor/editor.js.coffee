@@ -1,11 +1,12 @@
 //= require sir-trevor
+//= require_tree .
 
 # Editor Module
 #
 # To be used on pages that require a Sir Trevor editor.
 
 do (OctoBlog, $ = jQuery) ->
-  OctoBlog.Editor = {}
+  OctoBlog.Editor ?= {}
 
   (->
 
@@ -15,10 +16,10 @@ do (OctoBlog, $ = jQuery) ->
     # Set default options
     SirTrevor.setDefaults(
       required: ["Text"]
-      blockTypes: [ "Text","Heading","Image","List" ]
+      blockTypes: [ "Text","Heading","Image","List","Code"]
     )
 
-    # Start up the Editor module
+    # Public - Start up the Editor module
     #
     # element - a textarea area element
     @start = (element, data) ->
