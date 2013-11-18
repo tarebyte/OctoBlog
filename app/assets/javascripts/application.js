@@ -17,4 +17,5 @@
 //= require underscore
 //= require eventable
 //= require sir-trevor
+//= require highlight.pack
 //= require octoblog
