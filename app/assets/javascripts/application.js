@@ -16,5 +16,4 @@
 //= require bootstrap
 //= require underscore
 //= require eventable
-//= require sir-trevor
-//= require_tree .
+//= require octoblog
