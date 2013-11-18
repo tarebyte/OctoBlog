@@ -15,7 +15,7 @@ do (OctoBlog, $ = jQuery) ->
     # Set default options
     SirTrevor.setDefaults(
       required: ["Text"]
-      blockTypes: [ "Text","Heading","Image","List","Code"]
+      blockTypes: [ "Text","Heading","List","Code"]
     )
 
     # Public - Start up the Editor module
