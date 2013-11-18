@@ -4,7 +4,7 @@
  * Released under the MIT license
  * www.opensource.org/licenses/MIT
  *
- * 2013-11-10
+ * 2013-11-13
  */
 
 (function ($, _){
@@ -80,6 +80,11 @@
 
     render: function() {
       return this;
+    },
+
+    destroy: function() {
+      if (!_.isUndefined(this.stopListening)) { this.stopListening(); }
+      this.$el.remove();
     },
 
     _ensureElement: function() {
@@ -1322,8 +1327,6 @@
         this._setBlockInner();
         this._blockPrepare();
   
-        this.onBlockRender();
-  
         return this;
       },
   
@@ -1334,6 +1337,7 @@
         this.checkAndLoadData();
   
         this.$el.addClass('st-item-ready');
+        this.on("onRender", this.onBlockRender);
         this.save();
       },
   
@@ -1427,7 +1431,7 @@
     _.extend(Block.prototype, SirTrevor.SimpleBlock.fn, SirTrevor.BlockValidations, {
   
       bound: ["_handleContentPaste", "_onFocus", "_onBlur", "onDrop", "onDeleteClick",
-              "clearInsertedStyles", "getSelectionForFormatter"],
+              "clearInsertedStyles", "getSelectionForFormatter", "onBlockRender"],
   
       className: 'st-block st-icon--add',
   
@@ -1498,12 +1502,15 @@
         if (this.formattable) { this._initFormatting(); }
   
         this._blockPrepare();
-        this.onBlockRender();
   
         return this;
       },
   
       remove: function() {
+        if (this.ajaxable) {
+          this.resolveAllInQueue();
+        }
+  
         this.$el.remove();
       },
   
@@ -2526,30 +2533,7 @@
   SirTrevor.Editor = (function(){
   
     var SirTrevorEditor = function(options) {
-      SirTrevor.log("Init SirTrevor.Editor");
-  
-      this.blockTypes = {};
-      this.blockCounts = {}; // Cached block type counts
-      this.blocks = []; // Block references
-      this.errors = [];
-      this.options = _.extend({}, SirTrevor.DEFAULTS, options || {});
-      this.ID = _.uniqueId('st-editor-');
-  
-      if (!this._ensureAndSetElements()) { return false; }
-  
-      if(!_.isUndefined(this.options.onEditorRender) && _.isFunction(this.options.onEditorRender)) {
-        this.onEditorRender = this.options.onEditorRender;
-      }
-  
-      this._setRequired();
-      this._setBlocksTypes();
-      this._bindFunctions();
-  
-      this.store("create");
-      this.build();
-  
-      SirTrevor.instances.push(this);
-      SirTrevor.bindFormSubmit(this.$form);
+      this.initialize(options);
     };
   
     _.extend(SirTrevorEditor.prototype, FunctionBind, SirTrevor.Events, {
@@ -2567,7 +2551,33 @@
         'block:create:new':         'onNewBlockCreated'
       },
   
-      initialize: function() {},
+      initialize: function(options) {
+        SirTrevor.log("Init SirTrevor.Editor");
+  
+        this.blockTypes = {};
+        this.blockCounts = {}; // Cached block type counts
+        this.blocks = []; // Block references
+        this.errors = [];
+        this.options = _.extend({}, SirTrevor.DEFAULTS, options || {});
+        this.ID = _.uniqueId('st-editor-');
+  
+        if (!this._ensureAndSetElements()) { return false; }
+  
+        if(!_.isUndefined(this.options.onEditorRender) && _.isFunction(this.options.onEditorRender)) {
+          this.onEditorRender = this.options.onEditorRender;
+        }
+  
+        this._setRequired();
+        this._setBlocksTypes();
+        this._bindFunctions();
+  
+        this.store("create");
+        this.build();
+  
+        SirTrevor.instances.push(this);
+        SirTrevor.bindFormSubmit(this.$form);
+      },
+  
       /*
         Build the Editor instance.
         Check to see if we've been passed JSON already, and if not try and create a default block.
@@ -2611,6 +2621,40 @@
         if(!_.isUndefined(this.onEditorRender)) {
           this.onEditorRender();
         }
+      },
+  
+      destroy: function() {
+        // Destroy the rendered sub views
+        this.formatBar.destroy();
+        this.fl_block_controls.destroy();
+        this.block_controls.destroy();
+  
+        // Destroy all blocks
+        _.each(this.blocks, function(block) {
+          this.removeBlock(block.blockID);
+        }, this);
+  
+        // Stop listening to events
+        this.stopListening();
+  
+        // Cleanup element
+        var el = this.$el.detach();
+        this.$outer.remove();
+  
+        // Remove instance
+        SirTrevor.instances = _.reject(SirTrevor.instances, _.bind(function(instance) {
+          return instance.ID == this.ID;
+        }, this));
+  
+        // Clear the store
+        this.store("reset");
+  
+        this.$form.append(el);
+      },
+  
+      reinitialize: function(options) {
+        this.destroy();
+        this.initialize(options || this.options);
       },
   
       _setEvents: function() {
@@ -2683,6 +2727,7 @@
   
         SirTrevor.EventBus.trigger(data ? "block:create:existing" : "block:create:new", block);
         SirTrevor.log("Block created of type " + type);
+        block.trigger("onRender");
   
         this.$wrapper.toggleClass('st--block-limit-reached', this._blockLimitReached());
         this.triggerBlockCountUpdate();
@@ -2792,10 +2837,6 @@
         this.blockCounts[type] = this.blockCounts[type] - 1;
         this.blocks = _.reject(this.blocks, function(item){ return (item.blockID == block.blockID); });
         this.stopListening(block);
-  
-        if (block.ajaxable) {
-          block.resolveAllInQueue();
-        }
   
         block.remove();
   

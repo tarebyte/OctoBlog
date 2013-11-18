@@ -196,3 +196,9 @@ ul.st-text-block {
 .st-msg--error {
   color: $error-color;
 }
+
+.st-code-block {
+  pre, code {
+      min-height: 3.5em;
+  }
+}

@@ -80,6 +80,10 @@ a[data-type="video"] {
     @extend .fa-video-camera;
 }
 
+a[data-type="code"] {
+    @extend .fa-code;
+}
+
 /**
  * Large icon
  */
