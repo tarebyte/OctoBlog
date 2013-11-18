@@ -8,8 +8,8 @@ class Ability
       can :manage, :all
     elsif user.member?
       can :read,   :all
-      can :manage, Repo, :author_id => user.id
-      can :manage, Post, :author_id => user.id
+      can :manage, Repo, :user_id => user.id
+      can :manage, Post, :user_id => user.id
     else
       cannot :manage, :all
       can    :read, :all
