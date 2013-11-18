@@ -5,7 +5,7 @@ SirTrevor.Blocks.Code = SirTrevor.Block.extend(
   type: "code"
   icon_name: 'code'
   editorHTML: ->
-    "<div class='st-code-block'><pre><code contenteditable='true'></pre></code></div>"
+    "<div class='st-code-block'><pre><code contenteditable='true'></code></pre></div>"
 
   initialize: ->
     @$el.data("block", {data: {text: ""}})
@@ -14,8 +14,9 @@ SirTrevor.Blocks.Code = SirTrevor.Block.extend(
     @$el.find('code').html(data.text)
 
   toData: ->
+    data = getCodeData(@.$('code'))
     @setData(
-      "text": @$('code').text()
+      "text": data
     )
 
   onBlockRender: ->
@@ -30,11 +31,24 @@ SirTrevor.Blocks.Code = SirTrevor.Block.extend(
 
 
 # Private - Listen to keydown event on the text editor to capture the TAB key
-# and insert 4 spaces
+# and insert 2 spaces
 #
 # evt - event object
 keyDownListener = (evt) ->
   TABKEY = 9
   if evt.keyCode == TABKEY
     evt.preventDefault()
-    document.execCommand('insertText', null, '    ')
+    document.execCommand('insertText', null, '  ')
+
+# Private - get content of code block
+# Convert <div> and <br> to newlines
+#
+# Current works in Chrome and Firefox, maybe different in other browsers
+#
+# $el - the `code` element
+#
+# Returns the content of the code element, properly formatted
+getCodeData = ($el) ->
+  block = $("<div>#{$el.html()}</div>")
+  block.html().replace(/<div>/g,"\n").replace(/<\/div>/g, "").replace(/<br.?>/g, "\n")
+
