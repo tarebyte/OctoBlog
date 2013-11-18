@@ -1,5 +1,6 @@
 class Post
   include Mongoid::Document
+  include Tenacity
 
   field :title,   type: String
   field :content, type: String
@@ -8,7 +9,8 @@ class Post
   field :last_updated, type: DateTime, default: Time.now
 
   field :author,    type: String
-  field :author_id, type: Integer
+  field :user_id,   type: Integer
 
+  t_belongs_to :user
   belongs_to :repo
 end

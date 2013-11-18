@@ -6,7 +6,11 @@ gem 'rails', '4.0.1'
 gem 'bootstrap-sass', '~> 3.0.1.0.rc'
 gem 'bootswatch-rails'
 gem 'bson_ext'
+gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'decent_exposure'
+gem "font-awesome-rails", "~> 4.0.3.0"
+gem "friendly_id", "~> 5.0.1"
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'mongoid', github: 'mongoid/mongoid'
@@ -14,11 +18,11 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.0'
+gem 'tenacity', github: 'jwg2s/tenacity', branch: 'develop'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'quiet_assets'
 
-gem "font-awesome-rails", "~> 4.0.3.0"
-gem "friendly_id", "~> 5.0.1"
 
 group :development, :test do
   gem 'awesome_print'
@@ -26,7 +30,6 @@ group :development, :test do
   gem 'pry-plus'
   gem 'pry-rails'
   gem 'rspec-rails'
-  gem 'quiet_assets'
 
 
   gem "spring", "~> 0.9.2"

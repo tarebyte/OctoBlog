@@ -1,6 +1,13 @@
 class User < ActiveRecord::Base
+  include Tenacity
+
   extend FriendlyId
   friendly_id :username, use: :slugged
+
+  t_has_many :repos
+  t_has_many :posts
+
+  ROLES = %w{ admin member }
 
   def self.from_omniauth(auth)
     where(auth.slice('provider', 'uid')).first || create_from_omniauth(auth)
@@ -13,23 +20,15 @@ class User < ActiveRecord::Base
       user.provider = auth['provider']
       user.uid      = auth['uid']
       user.slug     = user.username
+      user.role     = 'member'
     end
   end
 
-  # Wrappers for Mongo Queries since we can't make associations
-  def post(title)
-    Post.where(title: title)
-  end
-
-  def repo(name)
-    Repo.where(name: name)
-  end
-
-  def repos
-    Repo.where(author_id: self.id)
-  end
-
-  def posts
-    Post.where(author_id: self.id)
+  # Meta programming bitch
+  # add is_member? and is_admin?
+  ROLES.each do |a_role|
+    define_method "is_#{a_role}?" do
+      role == a_role
+    end
   end
 end
