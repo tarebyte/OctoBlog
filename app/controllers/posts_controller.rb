@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  load_and_authorize_resource
+
   before_action :set_user
   before_action :set_repo
   before_action :set_post, only: [:show, :edit, :update, :destroy]

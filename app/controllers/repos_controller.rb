@@ -1,4 +1,7 @@
 class ReposController < ApplicationController
+
+  load_and_authorize_resource
+
   before_action :set_user
   before_action :set_repo, only: [:show, :edit, :update, :destroy]
 
