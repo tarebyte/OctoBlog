@@ -1,0 +1,32 @@
+<div class='container'>
+    <div class='row'>
+        <div class='main_content'>
+            <div class='blog_post'>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    testData = JSON.stringify(
+{
+   "data":[
+      {
+         "type":"text",
+         "data":{
+            "text":"What"
+         }
+      },
+      {
+         "type":"code",
+         "data":{
+            "text":"&lt;div class='container'&gt;\n    &lt;div class='row'&gt;\n        &lt;div class='main_content'&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n&lt;/div&gt;\n"
+         }
+      }
+   ]
+}
+    )
+
+    $('.blog_post').append(OctoBlog.Renderer.render(testData));
+</script>

@@ -1,5 +1,6 @@
 class Post
   include Mongoid::Document
+  include Mongoid::Slug
   include Tenacity
 
   field :title,   type: String
@@ -10,6 +11,8 @@ class Post
 
   field :author,    type: String
   field :user_id,   type: Integer
+
+  slug :title, :scope => :author
 
   t_belongs_to :user
   belongs_to :repo

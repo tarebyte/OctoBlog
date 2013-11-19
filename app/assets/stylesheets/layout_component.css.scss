@@ -16,14 +16,14 @@
 }
 
 .main_content {
-    @include make-md-column(9);
+    @include make-md-column(8);
     background-color: #FFF;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
 .sidebar {
-    @include make-md-column(3);
+    @include make-md-column(4);
     padding-top: 2em;
     padding-left: $grid-gutter-width;
     h2 {
@@ -53,4 +53,3 @@
         display: block;
     }
 }
-

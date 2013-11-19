@@ -1,0 +1,16 @@
+<%= render partial: "header" %>
+
+<% replace :main_content do %>
+    <%= render "form" %>
+<% end %>
+
+<%= replace :sidebar do %>
+    sidebar
+<% end %>
+
+<%= append :javascript do %>
+    <script>
+        OctoBlog.Editor.start($("textarea"));
+    </script>
+<% end %>
+

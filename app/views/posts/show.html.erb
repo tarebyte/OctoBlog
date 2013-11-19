@@ -1,0 +1,15 @@
+<%= render partial: "header" %>
+
+<% replace :main_content do %>
+    <%= render partial: "post", locals: {post: @post} %>
+<% end %>
+
+<%= render partial: "sidebar" %>
+
+<%= append :javascript do %>
+    <script>
+        $('.blog_content').each(function() {
+            OctoBlog.Renderer.renderBlock($(this));
+        });
+    </script>
+<% end %>

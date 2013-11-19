@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
 //= require underscore
 //= require eventable
 //= require sir-trevor
-//= require_tree .
+//= require highlight.pack
+//= require marked
+//= require octoblog
