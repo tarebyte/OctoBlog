@@ -1,4 +1,4 @@
-<%= form_for @post, url: user_repo_post_path do |f| %>
+<%= form_for @post, url: (@post.new_record? ? user_repo_posts_path : user_repo_post_path) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -23,6 +23,10 @@
 
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
-    <%= link_to "Cancel", user_repo_post_path, class: "btn btn-default btn-sm" %>
+    <% if @post.new_record? %>
+        <%= link_to "Cancel", user_repo_posts_path, class: "btn btn-default btn-sm" %>
+    <% else %>
+        <%= link_to "Cancel", user_repo_post_path, class: "btn btn-default btn-sm" %>
+    <% end %>
   </div>
 <% end %>
