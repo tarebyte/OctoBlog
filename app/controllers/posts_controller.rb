@@ -70,7 +70,7 @@ class PostsController < ApplicationController
     end
 
     def set_repo
-      @repo = @user.repos.where(name: params[:repo_id]).first
+      @repo = @user.repos.find(params[:repo_id])
     end
 
     def set_user
