@@ -11,7 +11,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'decent_exposure'
 gem "font-awesome-rails", "~> 4.0.3.0"
 gem "friendly_id", "~> 5.0.1"
-gem "mongoid_slug", "~> 3.2.0"
+gem 'mongoid_slug', :git => 'git@github.com:digitalplaywright/mongoid-slug.git'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'mongoid', github: 'mongoid/mongoid'
