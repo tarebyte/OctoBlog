@@ -1,10 +1,11 @@
 class ReposController < ApplicationController
+  before_action :set_user
   before_action :set_repo, only: [:show, :edit, :update, :destroy]
 
   # GET /repos
   # GET /repos.json
   def index
-    @repos = Repo.all
+    @repos = Repo.where user_id: @user.id
   end
 
   # GET /repos/1
@@ -64,7 +65,14 @@ class ReposController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_repo
-      @repo = Repo.find(params[:repo_id])
+      @repo = Repo.where(
+        id: params[:repo_id],
+        user_id: @user.id
+      )
+    end
+
+    def set_user
+      @user = User.friendly.find(params[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

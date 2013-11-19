@@ -1,23 +1,6 @@
-<h1>Listing repos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @repos.each do |repo| %>
-      <tr>
-        <td><%= link_to 'Show', repo %></td>
-        <td><%= link_to 'Edit', edit_repo_path(repo) %></td>
-        <td><%= link_to 'Destroy', repo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<% replace :page_header do %>
+    <h1><%=link_to @user.name, user_repos_path(@user) %></h1>
+<% end %>
+<% replace :main_content do %>
+    <%= render partial: "repo", :collection => @repos, locals: {user: @user} %>
+<% end %>
