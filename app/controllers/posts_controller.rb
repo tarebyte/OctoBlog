@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :set_user
+  before_action :set_repo
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -64,7 +66,15 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = @repo.posts.find(params[:post_id])
+    end
+
+    def set_repo
+      @repo = @user.repos.where(name: params[:repo_id]).first
+    end
+
+    def set_user
+      @user = User.friendly.find(params[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

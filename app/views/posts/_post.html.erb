@@ -1,0 +1,15 @@
+<article class="blog_post">
+<h2 class='blog_heading'>
+    <a href="#"><%= post.title %></a>
+    <small>
+        <% post.created_at %>
+        by
+        <%= link_to user_repos_path(post.repo.user) do %>
+            post.repo.user.name
+        <% end %>
+    </small>
+</h2>
+<p class='blog_content'>
+    <%= post.content %>
+</p>
+</article>
