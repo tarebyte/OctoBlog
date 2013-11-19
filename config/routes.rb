@@ -8,7 +8,7 @@ OctoBlog::Application.routes.draw do
   root to: 'static_pages#home'
 
   # Needs to be first!
-  match '/auth/:provider/callback', to: 'sessions#create',  via: :get
+  match '/auth/:provider/callback', to: 'sessions#create',  via: [:get, :post]
   match '/auth/failure',            to: redirect('/'),      via: :get
   match '/signout',                 to: 'sessions#destroy', via: :get
 

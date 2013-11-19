@@ -28,6 +28,14 @@
           </li>
         <% else %>
           <li>
+            <% if Rails.env.development? %>
+              <%= link_to '/auth/developer/' do %>
+                Sign In (dev)
+                <%= fa_icon "sign-in" %>
+              <% end %>
+            <% end %>
+          </li>
+          <li>
             <%= link_to '/auth/github/' do %>
               Sign In
               <%= fa_icon "sign-in" %>
