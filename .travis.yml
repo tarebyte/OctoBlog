@@ -1,0 +1,21 @@
+language: ruby
+services:
+  - postgresql
+  - mongodb
+rvm:
+  - 2.0.0
+env:
+  - DB=postgresql
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
+before_script:
+  - psql -c 'create database "OctoBlog_test";' -U postgres
+notifications:
+  email:
+    - tarebyte@gmail.com
+    - mill.brandont@gmail.com
+    - pnguyen1097@gmail.com
+    - evanschaffner@hotmail.com
+    - jain.242@osu.edu

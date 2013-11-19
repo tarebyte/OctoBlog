@@ -1,0 +1,40 @@
+<%= render "layouts/header" %>
+<div class="container">
+    <div class="row">
+        <div class="main_content">
+
+            <article class="blog_post">
+            <h2 class='blog_heading'>
+                <a href="#">This is a blog entry</a>
+                <small>
+                    2013-11-13
+                    by <a href='#'>Mark Tareshawty</a>
+                </small>
+            </h2>
+            <p> WASHINGTON — Just over 106,000 people picked health plans in the
+            first month of open enrollment through the state and federal
+            insurance marketplaces established by the Affordable Care Act,
+            President Obama’s health secretary said Wednesday, a fraction of the
+            administration’s initial estimate for enrollment during that period.
+            </p>
+            </article>
+
+            <ul class="pager">
+                <li class="previous"><a href="#">&larr; Older</a></li>
+                <li class="next"><a href="#">Newer &rarr;</a></li>
+            </ul>
+
+        </div>
+	<%= render "layouts/sidebar" %>
+    </div>
+</div>
+<script src="http://cloud.github.com/downloads/shyiko/lorem/lorem-0.4.0.js">
+</script>
+<script>
+    for (var i = 0; i < 5; i++) {
+        var el = $('article').first().clone();
+        el.find('h2 > a').html(lorem.ipsum('s1'));
+        el.find('p').html(lorem.ipsum('p3_10'));
+        $('article').last().after((el));
+    }
+</script>

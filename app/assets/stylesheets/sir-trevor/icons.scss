@@ -1,0 +1,130 @@
+/**
+Use Font Awesome for the icons
+*/
+
+
+/**
+ * UI icons
+ */
+[data-icon], [data-icon-after] {
+    overflow: hidden;
+}
+
+[data-icon="add"]:before {
+    @extend .fa-plus;
+}
+
+[data-icon-after="add"]:after {
+    // can't extend .fa-plus? WTF?
+    @extend [data-icon="add"]:before;
+}
+
+[data-icon="move"]:before {
+    @extend .fa-arrows-v;
+}
+
+[data-icon="bin"]:before {
+    @extend .fa-times;
+}
+
+[data-icon="tick"]:before {
+    @extend .fa-check;
+}
+
+[data-icon="close"]:before {
+    @extend .fa-times;
+}
+
+
+/**
+ * Block type icons
+ */
+
+a[data-type] {
+
+    // Hide original icons
+    .st-icon {
+        display: none;
+    }
+    &::before {
+        @extend .fa;
+        display: block;
+        font-size: 2em;
+    }
+}
+
+a[data-type="quote"] {
+    @extend .fa-quote-left;
+}
+
+a[data-type="Heading"] {
+    @extend .fa-h-square;
+}
+
+a[data-type="image"] {
+    @extend .fa-picture-o;
+}
+
+a[data-type="text"] {
+    @extend .fa-font;
+}
+
+a[data-type="tweet"] {
+    @extend .fa-twitter;
+}
+
+a[data-type="list"] {
+    @extend .fa-list-ul;
+}
+a[data-type="video"] {
+    @extend .fa-video-camera;
+}
+
+/**
+ * Large icon
+ */
+div[data-type] {
+    .st-block__inputs .st-icon {
+        &::before {
+            @extend .fa;
+            display: block;
+        }
+        height: 1em;
+        overflow: hidden;
+    }
+}
+
+div[data-type="image"] {
+    .st-block__inputs .st-icon {
+        @extend .fa-picture-o;
+    }
+}
+
+/**
+ * Formatter icons
+ */
+button.st-format-btn {
+    &::before {
+        @extend .fa;
+        visibility: visible;
+        font-size: $font-size-base;
+        padding: 0 0.5em;
+    }
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+}
+button[data-type="Bold"] {
+    @extend .fa-bold;
+}
+
+button[data-type="Italic"] {
+    @extend .fa-italic;
+}
+
+button[data-type="Link"] {
+    @extend .fa-link;
+}
+button[data-type="Unlink"] {
+    @extend .fa-chain-broken;
+}

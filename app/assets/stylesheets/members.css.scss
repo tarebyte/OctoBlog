@@ -1,0 +1,17 @@
+.members {
+    img {
+        width: 75px;
+	height: 75px;
+    }
+    p {
+        margin-bottom: 0px;
+	&.stats {
+	    color: gray;
+ 	}
+    }
+}
+.member {
+    @include make-md-column(6);
+    margin-top: 0px;
+    margin-bottom: 15px;
+}

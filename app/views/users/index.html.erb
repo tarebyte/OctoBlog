@@ -1,0 +1,7 @@
+<h1>We have <%= @user.count %> user(s)</h1>
+
+<% if @user.count > 0 %>
+  <% @user.each do |user| %>
+    <%= link_to user.name, user_path(user) %>
+  <% end %>
+<% end %>

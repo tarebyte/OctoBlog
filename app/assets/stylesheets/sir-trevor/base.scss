@@ -1,0 +1,36 @@
+.st-outer {
+  font-family: $base-font-family;
+  font-size: $font-size-base;
+  *, *:before, *:after {
+    @include transition(0.2s all);
+  }
+}
+
+//[data-icon]:before,
+//[data-icon-after]:after {
+  //content: attr(data-icon);
+//}
+
+.st-icon, [data-icon]::before, [data-icon-after]::after {
+  @extend .fa;
+  cursor:pointer;
+}
+
+.st-block__inner {
+
+  ::-moz-selection {
+      background: $accent-color;
+      text-shadow: none;
+  }
+
+  ::selection {
+      background: $accent-color;
+      text-shadow: none;
+  }
+
+}
+
+.st-spinner {
+  position: absolute!important;
+  left: 50%; top: 50%;
+}
