@@ -1,0 +1,16 @@
+#info_bar {
+    text-align: center;
+    color: white;
+    .jumbotron {
+    	background-color: $brand-primary
+    }
+    h1 {
+        font-size: 2em;
+    	font-weight: 700;
+    }	
+
+    p {
+        font-size: 1em;
+    	font-weight: 300;
+    }
+}
