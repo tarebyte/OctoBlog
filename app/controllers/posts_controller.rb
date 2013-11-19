@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = @repo.posts.new(post_params)
+    @post.user_id = @user.id
 
     respond_to do |format|
       if @post.save
