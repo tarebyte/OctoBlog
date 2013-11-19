@@ -11,6 +11,10 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.friendly.find(params[:id])
+    if params[:id].present?
+      @user = User.friendly.find(params[:id]) if params[:id].present?
+    elsif current_user
+      @user = current_user
+    end
   end
 end

@@ -1,5 +1,11 @@
+require 'constraints/authenticated'
+
 OctoBlog::Application.routes.draw do
-  root 'static_pages#home'
+
+  constraints(Constraints::Authenticated.new) do
+    get '/', to: 'users#show', as: 'authenticated_home'
+  end
+  root to: 'static_pages#home'
 
   # Needs to be first!
   match '/auth/:provider/callback', to: 'sessions#create',  via: :get
