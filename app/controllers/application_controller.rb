@@ -9,6 +9,16 @@ class ApplicationController < ActionController::Base
     # raise a 404 error when access is denied
     raise ActionController::RoutingError.new('Not Found')
   end
+
+  # CanCan doesn't work with strong_parameters!
+  # See
+  # https://github.com/ryanb/cancan/issues/835#issuecomment-18663815
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
   private
 
   def current_user

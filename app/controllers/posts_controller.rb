@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = @repo.posts.desc :updated_at
+    @posts = @repo.posts.desc(:updated_at).desc(:created_at)
   end
 
   # GET /posts/1
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user_repo_post_path, notice: 'Post was successfully created.' }
+        format.html { redirect_to user_repo_post_path @user, @repo, @post, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
         format.html { render action: 'new' }
