@@ -1,4 +1,4 @@
-<%= form_for(@post) do |f| %>
+<%= form_for @post, url: user_repo_post_path do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -11,7 +11,18 @@
     </div>
   <% end %>
 
+  <div class="form-group">
+      <%= f.label :title, "Title" %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Post Title" %>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :content, "Content" %>
+      <%= f.text_area :content %>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", user_repo_post_path, class: "btn btn-default btn-sm" %>
   </div>
 <% end %>

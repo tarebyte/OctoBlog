@@ -26,4 +26,11 @@ do (App = OctoBlog, $ = jQuery) ->
 
       return $el
 
+    @renderBlock = (element) =>
+      $el = $(element)
+      $el.hide();
+      data = $el.text()
+      $el.html(@render(data))
+      $el.show();
+
   ).call(App.Renderer)
