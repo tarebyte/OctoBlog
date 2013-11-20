@@ -1,0 +1,10 @@
+<% replace :page_header do %>
+    <h1>Projects</h1>
+<% end %>
+<% replace :main_content do %>
+    <% if @repos.count > 0 %>
+        <%= render partial: "repo", :collection => @repos %>
+    <% else %>
+        <p>There is no repositories yet.</p>
+    <% end %>
+<% end %>

@@ -2,13 +2,17 @@ class ReposController < ApplicationController
 
   load_and_authorize_resource
 
-  before_action :set_user
+  before_action :set_user, except: [:list]
   before_action :set_repo, only: [:show, :edit, :update, :destroy]
 
   # GET /repos
   # GET /repos.json
   def index
     @repos = Repo.where user_id: @user.id
+  end
+
+  def list
+    @repos = Repo.all.desc("_id")
   end
 
   # GET /repos/1

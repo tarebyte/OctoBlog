@@ -14,6 +14,7 @@ OctoBlog::Application.routes.draw do
 
   # match '/pages/:page',             to: 'static_pages#show', via: :get
   match '/members',                 to: 'users#index',      via: :get
+  match '/projects',                 to: 'repos#list',      via: :get
 
   resources 'users', only: [:show], path: '' do
     resources 'repos', only: [:index], path: '' do
