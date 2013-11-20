@@ -12,6 +12,8 @@ script:
   - bundle exec rspec spec/
 before_script:
   - psql -c 'create database "OctoBlog_test";' -U postgres
+  - echo -e "Host heroku.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 notifications:
   email:
     - tarebyte@gmail.com

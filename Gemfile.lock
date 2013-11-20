@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/digitalplaywright/mongoid-slug.git
+  revision: fb929a5d5b2a580fed367c6cd25772ce9e92e80a
+  specs:
+    mongoid_slug (3.2.0)
+      mongoid (> 3.0)
+      stringex (~> 2.0)
+
+GIT
   remote: git://github.com/jwg2s/tenacity.git
   revision: 752c66d4242149ff21d771c5fefeefdd7f38bc4d
   branch: develop
@@ -15,14 +23,6 @@ GIT
       moped (~> 2.0.beta3)
       origin (~> 1.0)
       tzinfo (~> 0.3.37)
-
-GIT
-  remote: git@github.com:digitalplaywright/mongoid-slug.git
-  revision: fb929a5d5b2a580fed367c6cd25772ce9e92e80a
-  specs:
-    mongoid_slug (3.2.0)
-      mongoid (> 3.0)
-      stringex (~> 2.0)
 
 GEM
   remote: https://rubygems.org/
