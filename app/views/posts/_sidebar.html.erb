@@ -2,12 +2,17 @@
   <h2>
     <%= @user.username %>'s <%= "project".pluralize(@user.repos.count) %>
   </h2>
-  <ul class='list-unstyled'>
+  <div class='list-group'>
     <% @user.repos.each do |repo| %>
-      <li>
-      <%= link_to repo.name, user_repo_posts_path(@user, repo.name) %>
-      </li>
+        <%= link_to repo.name, user_repo_posts_path(@user, repo.name),
+            class: 'list-group-item'
+        %>
     <% end %>
+  </div>
+
+  <ul class='list-unstyled'>
+      <li>
+      </li>
   </ul>
 <% end %>
 

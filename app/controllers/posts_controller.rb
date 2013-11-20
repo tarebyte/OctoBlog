@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   before_action :set_user
   before_action :set_repo
   before_action :set_post, only: [:show, :edit, :update, :destroy]
@@ -6,7 +7,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = @repo.posts.desc :updated_at
+    @posts = @repo.posts.accessible_by(current_ability)
+      .desc(:updated_at).desc(:created_at)
   end
 
   # GET /posts/1
@@ -16,7 +18,8 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Post.new user_id: @user.id, repo_id: @repo.id
+    authorize! :new, @post
   end
 
   # GET /posts/1/edit
@@ -27,10 +30,13 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = @repo.posts.new(post_params)
+    @post.user_id = @user.id
+
+    authorize! :create, @post
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user_repo_post_path, notice: 'Post was successfully created.' }
+        format.html { redirect_to user_repo_post_path @user, @repo, @post, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
         format.html { render action: 'new' }
@@ -64,9 +70,13 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_post
+      # replace load_and_authorize_resources
       @post = @repo.posts.find(params[:id])
+      puts "\n\n\n"
+      puts action_name.to_sym
+      puts "\n\n\n"
+      authorize! action_name.to_sym, @post
     end
 
     def set_repo

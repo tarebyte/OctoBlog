@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+
   before_action :set_user, only: [:show]
 
   def index
-    @user = User.all
+    @users = User.all
   end
 
   def show
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.friendly.find(params[:id])
+    @user = params[:id].present? ?
+      User.friendly.find(params[:id]) : current_user
   end
 end

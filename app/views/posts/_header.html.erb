@@ -3,4 +3,9 @@
         <%= link_to @repo.name, user_repo_posts_path(@user, @repo.name) %>
     </h1>
     <p>Project description</p>
+    <% if can? :create, Post.new(user_id: @user.id) %>
+        <%= link_to new_user_repo_post_path, class: "btn btn-sm btn-primary" do %>
+            <%= fa_icon "file" %> Add a new post
+        <% end %>
+    <% end %>
 <% end %>

@@ -4,5 +4,8 @@
             <%= fa_icon "book" %> <%= repo.name%>
         <% end %>
     </h2>
+    <p class='stats'>
+        <%= fa_icon "file" %> <%= pluralize(repo.posts.count,"post" )%>
+    </p>
     <p>Project description</p>
 </div>

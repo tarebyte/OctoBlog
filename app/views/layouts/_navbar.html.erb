@@ -13,10 +13,22 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to projects_path do %>
+            Browse
+          <% end %>
+        </li>
+        <li>
+          <%= link_to members_path do %>
+            Members
+          <% end %>
+        </li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li>
-            <%= link_to user_path(current_user) do %>
+            <%= link_to authenticated_home_path do %>
               <%= fa_icon "user", text: "#{current_user.name}" %>
             <% end %>
           </li>
@@ -27,6 +39,14 @@
             <% end %>
           </li>
         <% else %>
+          <li>
+            <% if Rails.env.development? %>
+              <%= link_to '/auth/developer/' do %>
+                Sign In (dev)
+                <%= fa_icon "sign-in" %>
+              <% end %>
+            <% end %>
+          </li>
           <li>
             <%= link_to '/auth/github/' do %>
               Sign In
