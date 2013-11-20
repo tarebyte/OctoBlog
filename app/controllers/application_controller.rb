@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   layout "content"
 
-  rescue_from CanCan::AccessDenied do
+  rescue_from CanCan::AccessDenied do |e|
     # raise a 404 error when access is denied
     raise ActionController::RoutingError.new('Not Found')
   end
