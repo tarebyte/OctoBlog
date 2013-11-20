@@ -1,0 +1,19 @@
+<% replace :page_header do %>
+    Hello, <%= @user.name %>
+<% end %>
+<% replace :main_content do %>
+
+    <%# replace this with newsfeed if doen %>
+    <h2>Your Recent Posts</h2>
+    <%= render partial: "posts/post", collection: @user.posts %>
+<% end %>
+<% replace :sidebar do %>
+    <h2>Your Repos</h2>
+    <div class="list-group">
+        <% @user.repos.each do |repo| %>
+            <%= link_to repo.name, user_repo_posts_path(@user, repo),
+                class: "list-group-item" %>
+        <% end %>
+    </div>
+<% end %>
+
