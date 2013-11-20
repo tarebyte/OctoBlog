@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   layout "content"
 
   rescue_from CanCan::AccessDenied do |e|
+    puts "\n\n---#{e.action}, #{e.subject.inspect}---\n\n"
     # raise a 404 error when access is denied
     raise ActionController::RoutingError.new('Not Found')
   end

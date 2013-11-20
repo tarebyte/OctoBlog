@@ -3,6 +3,24 @@
     <%= link_to user_repo_post_path(@user, @repo, post) do %>
         <%= post.title %>
     <% end %>
+
+    <div class='pull-right'>
+        <% if can? :update, post then %>
+            <%= link_to edit_user_repo_post_path(@user.id, @repo.id, post.id),
+                class: "btn btn-primary btn-xs" do %>
+                <%= fa_icon "edit" %>
+                Edit
+            <% end %>
+        <% end %>
+        <% if can? :destroy, post then %>
+            <%= link_to edit_user_repo_post_path(@user.id, @repo.id, post.id),
+                    class: "btn btn-danger btn-xs" do %>
+                    <%= fa_icon "trash-o" %>
+                    Delete
+            <% end %>
+        <% end %>
+    </div>
+
     <small>
         <time datetime="<%= post.created_at %>"
         title="<%= post.created_at.strftime "%F %T" %>">

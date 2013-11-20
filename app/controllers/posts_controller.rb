@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new user_id: @user.id, repo_id: @repo.id
-    authorize! @post, :create
+    authorize! :new, @post
   end
 
   # GET /posts/1/edit
@@ -30,9 +30,9 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = @repo.posts.new(post_params)
-    authorize! @post, :create
-
     @post.user_id = @user.id
+
+    authorize! :create, @post
 
     respond_to do |format|
       if @post.save
@@ -73,6 +73,9 @@ class PostsController < ApplicationController
     def set_post
       # replace load_and_authorize_resources
       @post = @repo.posts.find(params[:id])
+      puts "\n\n\n"
+      puts action_name.to_sym
+      puts "\n\n\n"
       authorize! action_name.to_sym, @post
     end
 
