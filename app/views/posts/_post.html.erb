@@ -28,9 +28,13 @@
         title="<%= post.created_at.strftime "%F %T" %>">
             <%= post.created_at.strftime "%F" %>
         </time>
-        by
-        <%= link_to user_repos_path(post.repo.user) do %>
-            <%= post.repo.user.name %>
+        <% if controller_name != "users" %>
+            by
+            <%= link_to post.user.name, user_repos_path(post.user)%>
+        <% end %>
+        <% if controller_name != "posts" %>
+            in
+            <%= link_to post.repo.name, user_repo_posts_path(post.user, post.repo) %>
         <% end %>
     </small>
 </h2>

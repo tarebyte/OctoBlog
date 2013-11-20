@@ -1,7 +1,22 @@
-<h1>We have <%= @user.count %> user(s)</h1>
+<% replace :page_header do %>
+    <h1>Members</h1>
+<% end %>
+<% replace :main_content do %>
 
-<% if @user.count > 0 %>
-  <% @user.each do |user| %>
-    <%= link_to user.name, user_path(user) %>
-  <% end %>
+<ul class='media-list members'>
+<%= render partial: "user", collection: @users %>
+</ul>
+
+<% end %>
+
+<%= replace :sidebar do %>
+<div class="panel panel-default">
+  <div class="panel-heading">Statistics</div>
+  <div class="panel-body">
+      <p class="lead">
+      Proudly serving <strong><%= pluralize(User.count, "user")%></strong>,
+      hosting <strong><%= pluralize(Repo.count, "project blog")%></strong>,
+      with <strong><%= pluralize(Post.count, "post")%></strong> published.
+  </div>
+</div>
 <% end %>

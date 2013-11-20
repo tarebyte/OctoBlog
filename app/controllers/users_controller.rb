@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def index
-    @user = User.all
+    @users = User.all
   end
 
   def show

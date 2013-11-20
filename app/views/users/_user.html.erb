@@ -1,0 +1,22 @@
+<li class="media member">
+    <a class="pull-left">
+        <img class="media-object" src="http://placehold.it/391x391"/>
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading">
+            <%= link_to user.name, user_path(user) %>
+        </h4>
+        <p>
+            @<%=user.username%>
+        </p>
+        <p class="stats">
+        <span title="<%= pluralize(user.repos.count, "project")%>">
+            <%= fa_icon "book"%> <%= user.repos.count %>
+        </span>
+        &nbsp;
+        <span title="<%= pluralize(user.posts.count, "post") %>">
+            <%= fa_icon "file"%> <%= user.posts.count %>
+        </span>
+        </p>
+    </div>
+</li>
