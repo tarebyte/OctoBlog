@@ -24,9 +24,9 @@
     </div>
 
     <small>
-        <time datetime="<%= post.created_at %>"
-        title="<%= post.created_at.strftime "%F %T" %>">
-            <%= post.created_at.strftime "%F" %>
+        <time datetime="<%= post.created_at.in_time_zone('Eastern Time (US & Canada)') %>"
+        title="<%= post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime "%F %T" %>">
+            <%= post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime "%F" %>
         </time>
         <% if controller_name != "users" %>
             by
