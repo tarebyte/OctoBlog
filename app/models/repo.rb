@@ -1,6 +1,7 @@
 class Repo
   include Mongoid::Document
   include Mongoid::Slug
+  include Mongoid::Timestamps
   include Tenacity
 
   field :name,        type: String
