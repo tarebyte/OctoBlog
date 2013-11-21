@@ -23,12 +23,16 @@ class User < ActiveRecord::Base
     user = where(auth.slice('provider', 'uid')).first || create_from_omniauth(auth)
 
     # get avatar_url from Github
-    avatar_url = auth.extra.raw_info.avatar_url
+    if !auth.extra.raw_info.nil?
+      avatar_url = auth.extra.raw_info.avatar_url
 
-    # update it if necessary
-    if user.avatar_url != avatar_url
-      user.avatar_url = avatar_url
-      user.save
+      # update it if necessary
+      if user.avatar_url != avatar_url
+        user.avatar_url = avatar_url
+        user.save
+      end
+    else 
+      avatar_url = "http://placehold.it/391x391"
     end
 
     user
