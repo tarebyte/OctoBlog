@@ -5,6 +5,6 @@
     <% if @repos.count > 0 %>
         <%= render partial: "repo", :collection => @repos %>
     <% else %>
-        <p>There is no repositories yet.</p>
+        <p><%= @user.username %> has not added any repositories yet.</p>
     <% end %>
 <% end %>
