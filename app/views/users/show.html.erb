@@ -5,16 +5,29 @@
 <% replace :main_content do %>
 
     <h2>News Feed</h2>
-    <%= render partial: "posts/post", collection: @posts %>
+    <% if @posts.count > 0 %>
+        <%= render partial: "posts/post", collection: @posts %>
+    <% else %>
+        <p>The blogs you follow have no new posts.</p>
+        <p>Follow more <%= link_to "blogs", projects_path %> for more posts</p>
+    <% end %>
 
 <% end %>
 <% replace :sidebar do %>
     <h2>Your Repos</h2>
     <div class="list-group">
-        <% @user.repos.each do |repo| %>
-            <%= link_to repo.name, user_repo_posts_path(@user, repo),
-                class: "list-group-item" %>
+        <%= link_to new_user_repo_path(@user),
+            class: "list-group-item" do %>
+            <%= fa_icon "plus" %> Add a repo
         <% end %>
+        </li>
+        <% if @user.repos.count > 0 %>
+            <% @user.repos.each do |repo| %>
+                <%= link_to repo.name, user_repo_posts_path(@user, repo),
+                    class: "list-group-item" %>
+            <% end %>
+        <% end %>
+
     </div>
 <% end %>
 
