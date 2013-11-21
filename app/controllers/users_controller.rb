@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     # Set up news feed.
 
     # get the list of people the user is following
-    usernames = Octokit.following(@user.username).map {|u| u.login }
+    usernames = Octokit.following(@user.username, { page_limit: 1000 }).map {|u| u.login }
 
     # grab their ids
     user_ids = User.where(username: usernames).pluck :id

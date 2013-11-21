@@ -8,7 +8,7 @@ module ReposHelper
 
   def get_github_repos
     client = Octokit::Client.new
-    client.list_repositories(params[:user_id]).map { |repo| repo.name }
+    client.list_repositories(params[:user_id], { per_page: 1000 }).map { |repo| repo.name }
   end
 
   def get_users_repos
