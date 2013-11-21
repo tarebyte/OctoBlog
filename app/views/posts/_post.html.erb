@@ -1,6 +1,6 @@
 <article class="blog_post">
 <h2 class='blog_heading'>
-    <%= link_to user_repo_post_path(post.user.slug, post.repo.slug, post.slug) do %>
+    <%= link_to user_repo_post_path(post.user, post.repo, post) do %>
         <%= post.title %>
     <% end %>
 
