@@ -22,6 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'quiet_assets'
 gem "nestive", "~> 0.5.0"
 gem "octokit", "~> 2.6.0"
+gem "faraday-http-cache", "~> 0.3.0"
 
 
 group :development, :test do
