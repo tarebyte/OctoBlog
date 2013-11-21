@@ -28,9 +28,8 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li>
-            <%= link_to authenticated_home_path do %>
-              <%= image_tag current_user.avatar, size: "16" %>
-              <%= current_user.name %>
+            <%= link_to user_path(current_user) do %>
+              <%= fa_icon "user", text: "#{current_user.name}" %>
             <% end %>
           </li>
           <li>
