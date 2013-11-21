@@ -6,10 +6,10 @@
 
     <h2>News Feed</h2>
     <% if @posts.count > 0 %>
-        <%= render partial: "posts/post", collection: @posts %>
+        <% render_posts @posts, true %>
     <% else %>
         <p>The blogs you follow have no new posts.</p>
-        <p>Follow more <%= link_to "blogs", projects_path %> for more posts</p>
+        <p>Follow more <%= link_to "users", projects_path %> for more posts.</p>
     <% end %>
 
 <% end %>
@@ -29,5 +29,15 @@
         <% end %>
 
     </div>
+<% end %>
+
+<%= append :javascript do %>
+    <script>
+        $('.blog_content').each(function() {
+            OctoBlog.Renderer.renderBlock($(this), {
+                excerpt: 1
+            });
+        });
+    </script>
 <% end %>
 
