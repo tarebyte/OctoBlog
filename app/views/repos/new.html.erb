@@ -1,12 +1,5 @@
-<% replace :page_header do %>
-  <h1>
-    <%=link_to @user.name, user_repos_path(@user) %>
-    <%= link_to image_tag(@user.avatar, size: "60",
-            class: "img-responsive img-thumbnail"),
-            @user.avatar
-    %>
-  </h1>
-<% end %>
+<% title "Add A Repo" %>
+<%= render "header" %>
 
 <% replace :main_content do %>
   <%= render 'form' %>
