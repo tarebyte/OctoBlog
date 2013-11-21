@@ -1,6 +1,6 @@
 <% replace :page_header do %>
     <h1><%=link_to @user.name, user_repos_path(@user) %> /
-        <%= link_to @repo.name, user_repo_posts_path(@user, @repo.name) %>
+        <%= link_to @repo.name, user_repo_posts_path(@user, @repo.slug) %>
     </h1>
     <p>Project description</p>
     <% if can? :create, Post.new(user_id: @user.id) %>

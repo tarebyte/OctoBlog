@@ -34,9 +34,14 @@ class ReposController < ApplicationController
   def create
     @repo = Repo.new(repo_params)
 
+    @repo.user = current_user
+    @repo.user_id = current_user.id
+
+    authorize! :create, @repo
+
     respond_to do |format|
       if @repo.save
-        format.html { redirect_to @repo, notice: 'Repo was successfully created.' }
+        format.html { redirect_to user_repo_posts_path(@user.username, @repo.slug), notice: 'Repo was successfully created.' }
         format.json { render action: 'show', status: :created, location: @repo }
       else
         format.html { render action: 'new' }
@@ -72,7 +77,12 @@ class ReposController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_repo
-      @repo = @user.find(params[:repo_id])
+      # replace load_and_authorize_resources
+      @repo = @user.repos.find(params[:id])
+      puts "\n\n\n"
+      puts action_name.to_sym
+      puts "\n\n\n"
+      authorize! action_name.to_sym, @repo
     end
 
     def set_user
@@ -81,6 +91,6 @@ class ReposController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def repo_params
-      params[:repo]
+      params.require(:repo).permit(:name)
     end
 end

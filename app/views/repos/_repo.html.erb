@@ -1,6 +1,6 @@
 <div class="repo">
     <h2>
-        <%= link_to user_repo_posts_path(repo.user.slug, repo.name) do %>
+        <%= link_to user_repo_posts_path(repo.user.slug, repo.slug) do %>
             <%= fa_icon "book" %> <%= repo.name%>
         <% end %>
     </h2>

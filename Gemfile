@@ -13,7 +13,6 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'cancan'
-gem "octokit", "~> 2.6.0"
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'pg'
@@ -22,6 +21,7 @@ gem 'tenacity', github: 'jwg2s/tenacity', branch: 'develop'
 gem 'uglifier', '>= 1.3.0'
 gem 'quiet_assets'
 gem "nestive", "~> 0.5.0"
+gem "octokit", "~> 2.6.0"
 
 
 group :development, :test do

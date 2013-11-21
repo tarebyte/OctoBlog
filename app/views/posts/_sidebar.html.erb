@@ -4,7 +4,7 @@
   </h2>
   <div class='list-group'>
     <% @user.repos.each do |repo| %>
-        <%= link_to repo.name, user_repo_posts_path(@user, repo.name),
+        <%= link_to repo.name, user_repo_posts_path(@user, repo.slug),
             class: 'list-group-item'
         %>
     <% end %>

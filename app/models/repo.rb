@@ -7,7 +7,7 @@ class Repo
   field :url,    type: String
 
   slug do |cur_object|
-    cur_object.name
+    cur_object.name.gsub(/\W/, '-')
   end
 
   t_belongs_to :user
