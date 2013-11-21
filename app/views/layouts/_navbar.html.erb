@@ -29,7 +29,8 @@
         <% if current_user %>
           <li>
             <%= link_to authenticated_home_path do %>
-              <%= fa_icon "user", text: "#{current_user.name}" %>
+              <%= image_tag current_user.avatar, size: "16" %>
+              <%= current_user.name %>
             <% end %>
           </li>
           <li>
