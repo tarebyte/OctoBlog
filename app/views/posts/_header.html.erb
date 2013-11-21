@@ -1,5 +1,12 @@
 <% replace :page_header do %>
-    <h1><%=link_to @user.name, user_repos_path(@user) %> /
+    <h1>
+        <%= link_to image_tag(
+                @user.avatar,
+                size: "60",
+                class: "img-thumbnail"
+            ), @user.avatar
+        %>
+        <%=link_to @user.name, user_repos_path(@user) %> /
         <%= link_to @repo.name, user_repo_posts_path(@user, @repo.slug) %>
     </h1>
     <p>Project description</p>

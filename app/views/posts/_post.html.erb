@@ -5,7 +5,6 @@
     <% end %>
 
     <div class='pull-right'>
-        <div class='btn-group'>
         <% if can? :update, post then %>
             <%= link_to edit_user_repo_post_path(post.user, post.repo, post.id),
                 class: "btn btn-primary btn-xs" do %>
@@ -14,24 +13,23 @@
             <% end %>
         <% end %>
         <% if can? :destroy, post then %>
-            <%= link_to edit_user_repo_post_path(post.user, post.repo, post.id),
-                    class: "btn btn-danger btn-xs" do %>
+            <%= button_to user_repo_post_path(post.user, post.repo, post),
+                method: "delete",
+                class: "btn btn-danger btn-xs",
+                confirm: "Are you sure you want to delete this post?" do %>
                     <%= fa_icon "trash-o" %>
                     Delete
-            <% end %>
+                <% end %>
         <% end %>
-        </div>
     </div>
 
     <small>
-        <time datetime="<%= post.created_at %>"
-        title="<%= post.created_at.strftime "%F %T" %>">
-            <%= post.created_at.strftime "%F" %>
+        <time datetime="<%= post.created_at.in_time_zone('Eastern Time (US & Canada)') %>"
+        title="<%= post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime "%F %T" %>">
+            <%= post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime "%F" %>
         </time>
-        <% if controller_name != "users" %>
             by
             <%= link_to post.user.name, user_repos_path(post.user)%>
-        <% end %>
         <% if controller_name != "posts" %>
             in
             <%= link_to post.repo.name, user_repo_posts_path(post.user, post.repo) %>

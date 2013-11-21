@@ -9,8 +9,33 @@ class User < ActiveRecord::Base
 
   ROLES = %w{ admin member }
 
+  def avatar
+    # return the avatar url, default to github identicons
+    avatar_url || "https://identicons.github.com/#{username}.png"
+  end
+
+  def github
+    # return the GitHub profile url
+    "https://github.com/#{username}"
+  end
+
   def self.from_omniauth(auth)
-    where(auth.slice('provider', 'uid')).first || create_from_omniauth(auth)
+    user = where(auth.slice('provider', 'uid')).first || create_from_omniauth(auth)
+
+    # get avatar_url from Github
+    if !auth.extra.raw_info.nil?
+      avatar_url = auth.extra.raw_info.avatar_url
+
+      # update it if necessary
+      if user.avatar_url != avatar_url
+        user.avatar_url = avatar_url
+        user.save
+      end
+    else 
+      avatar_url = "http://placehold.it/391x391"
+    end
+
+    user
   end
 
   def self.create_from_omniauth(auth)

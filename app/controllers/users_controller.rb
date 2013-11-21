@@ -7,6 +7,18 @@ class UsersController < ApplicationController
   end
 
   def show
+
+    # Set up news feed.
+
+    # get the list of people the user is following
+    usernames = Octokit.following(@user.username).map {|u| u.login }
+
+    # grab their ids
+    user_ids = User.where(username: usernames).pluck :id
+
+    # get 20 of the latest posts by these users
+    @posts = Post.in(user_id: user_ids)
+      .desc(:updated_at).desc(:created_at).limit(20)
   end
 
   private
