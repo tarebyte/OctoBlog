@@ -4,10 +4,8 @@ ruby '2.0.0'
 gem 'rails', '4.0.1'
 
 gem 'bootstrap-sass', '~> 3.0.1.0.rc'
-gem 'bootswatch-rails'
 gem 'bson_ext'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'decent_exposure'
 gem "font-awesome-rails", "~> 4.0.3.0"
 gem "friendly_id", "~> 5.0.1"
 gem 'mongoid_slug', :github => 'digitalplaywright/mongoid-slug'
@@ -15,6 +13,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'cancan'
+gem "octokit", "~> 2.6.0"
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'pg'
