@@ -39,4 +39,9 @@
 <div class='blog_content' style='display: none'>
     <%= post.content %>
 </div>
+
+<% if more %>
+    <%= link_to "read more",
+    user_repo_post_path(post.user, post.repo, post) %>
+<% end %>
 </article>

@@ -1,7 +1,7 @@
 <%= render partial: "header" %>
 
 <% replace :main_content do %>
-    <%= render partial: "post", locals: {post: @post} %>
+    <% render_post @post %>
 <% end %>
 
 <%= render partial: "sidebar" %>

@@ -2,7 +2,7 @@
 
 <% replace :main_content do %>
     <% if @posts.count > 0 %>
-        <%= render partial: "post", :collection => @posts %>
+        <% render_posts @posts, true %>
     <% else %>
         <p><%= @repo.name %> contains no posts yet.</p>
     <% end %>
@@ -13,7 +13,9 @@
 <%= append :javascript do %>
     <script>
         $('.blog_content').each(function() {
-            OctoBlog.Renderer.renderBlock($(this));
+            OctoBlog.Renderer.renderBlock($(this), {
+                excerpt: 1
+            });
         });
     </script>
 <% end %>
