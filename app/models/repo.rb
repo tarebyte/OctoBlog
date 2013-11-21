@@ -3,8 +3,9 @@ class Repo
   include Mongoid::Slug
   include Tenacity
 
-  field :name,   type: String
-  field :url,    type: String
+  field :name,        type: String
+  field :url,         type: String
+  field :description, type: String
 
   slug do |cur_object|
     cur_object.name.gsub(/\W/, '-')

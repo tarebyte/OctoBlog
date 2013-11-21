@@ -33,7 +33,10 @@ class ReposController < ApplicationController
     @repo = Repo.new(repo_params)
 
     @repo.user = current_user
+
     @repo.user_id = current_user.id
+    @repo.description = get_repo_description(@repo.name)
+    @repo.url = "http://github.com/#{current_user.username}/#{@repo.name}"
 
     authorize! :create, @repo
 
@@ -91,5 +94,10 @@ class ReposController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def repo_params
       params.require(:repo).permit(:name)
+    end
+
+    def get_repo_description(repo_name)
+      client = Octokit::Client.new
+      client.repository("#{current_user.username}/#{repo_name}").description
     end
 end
