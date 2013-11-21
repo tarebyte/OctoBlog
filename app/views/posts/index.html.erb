@@ -4,7 +4,7 @@
     <% if @posts.count > 0 %>
         <%= render partial: "post", :collection => @posts %>
     <% else %>
-        <p><%= repo.name %> contains no posts yet.</p>
+        <p><%= @repo.name %> contains no posts yet.</p>
     <% end %>
 <% end %>
 
