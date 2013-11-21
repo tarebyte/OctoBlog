@@ -1,0 +1,16 @@
+  <h2>Recent Posts</h2>
+  <ul class='list-unstyled'>
+      <% object.posts.desc(:updated_at)
+          .desc(:created_at)
+          .limit(5).each do |post| %>
+          <li>
+          <%= link_to post.title,
+              user_repo_post_path(post.user, post.repo, post) %>
+          <% if object.class.equal? "Repo" %>
+              in
+              <%= link_to post.repo.name,
+                  user_repo_posts_path(post.user, post.repo) %>
+              </li>
+          <% end %>
+      <% end %>
+  </ul>

@@ -7,10 +7,12 @@
             <%= link_to user.name, user_path(user) %>
         </h4>
         <p>
-            <%=link_to "@" + user.username, user.github%>
+            <%=link_to user.github, target:"_blank" do %>
+                <%= fa_icon "github"%><%=user.username%>
+            <% end %>
         </p>
         <p class="stats">
-        <span title="<%= pluralize(user.repos.count, "project")%>">
+        <span title="<%= pluralize(user.repos.count, "repository")%>">
             <%= fa_icon "book"%> <%= user.repos.count %>
         </span>
         &nbsp;
