@@ -9,10 +9,7 @@ class Post
   field :created_at,   type: DateTime, default: Time.now
   field :last_updated, type: DateTime, default: Time.now
 
-  field :author,    type: String
-  field :user_id,   type: Integer
-
-  slug :title, :scope => :author
+  slug :title, :scope => :repo_id
 
   t_belongs_to :user
   belongs_to :repo
