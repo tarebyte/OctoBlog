@@ -7,7 +7,7 @@
             <%= link_to user.name, user_path(user) %>
         </h4>
         <p>
-            <a href="https://github.com/<%=user.username%>">@<%=user.username%></a>
+            <%=link_to "@" + user.username, user.github%>
         </p>
         <p class="stats">
         <span title="<%= pluralize(user.repos.count, "project")%>">
