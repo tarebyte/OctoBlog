@@ -1,7 +1,5 @@
 class ReposController < ApplicationController
 
-  load_and_authorize_resource
-
   before_action :set_user, except: [:list]
   before_action :set_repo, only: [:show, :edit, :update, :destroy]
 
@@ -77,6 +75,7 @@ class ReposController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_repo
+      puts "set_repo"
       # replace load_and_authorize_resources
       @repo = @user.repos.find(params[:id])
       puts "\n\n\n"
