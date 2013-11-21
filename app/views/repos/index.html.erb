@@ -1,17 +1,4 @@
-<% replace :page_header do %>
-  <h1>
-    <%=link_to @user.name, user_repos_path(@user) %>
-    <%= link_to image_tag(@user.avatar, size: "60",
-            class: "img-responsive img-thumbnail"),
-            @user.avatar
-    %>
-  </h1>
-    <% if can? :create, Repo.new(user_id: @user.id) %>
-        <%= link_to new_user_repo_path, class: "btn btn-sm btn-primary" do %>
-            <%= fa_icon "file" %> Add a new repo
-        <% end %>
-    <% end %>
-<% end %>
+<%= render "header" %>
 <% replace :main_content do %>
     <% if @repos.count > 0 %>
         <%= render partial: "repo", :collection => @repos %>
