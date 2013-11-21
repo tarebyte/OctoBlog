@@ -14,6 +14,11 @@ class User < ActiveRecord::Base
     avatar_url || "https://identicons.github.com/#{username}.png"
   end
 
+  def github
+    # return the GitHub profile url
+    "https://github.com/#{username}"
+  end
+
   def self.from_omniauth(auth)
     user = where(auth.slice('provider', 'uid')).first || create_from_omniauth(auth)
 
