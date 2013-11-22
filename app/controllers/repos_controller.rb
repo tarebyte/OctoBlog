@@ -68,9 +68,10 @@ class ReposController < ApplicationController
   # DELETE /repos/1
   # DELETE /repos/1.json
   def destroy
+
     @repo.destroy
     respond_to do |format|
-      format.html { redirect_to repos_url }
+      format.html { redirect_to user_repos_path }
       format.json { head :no_content }
     end
   end
