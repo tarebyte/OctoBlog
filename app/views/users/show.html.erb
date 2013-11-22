@@ -8,8 +8,8 @@
     <% if @posts.count > 0 %>
         <% render_posts @posts, true %>
     <% else %>
-        <p>The blogs you follow have no new posts.</p>
-        <p>Follow more <%= link_to "users", projects_path %> for more posts.</p>
+        <p>The users you follow have no new posts.</p>
+        <p>Follow more <%= link_to "users", members_path %> for more posts.</p>
     <% end %>
 
 <% end %>
