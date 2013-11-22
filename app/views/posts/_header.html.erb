@@ -7,15 +7,22 @@
                 class: "img-thumbnail"
             ), @user.avatar
         %>
-        <%=link_to @user.username, user_repos_path(@user) %> /
+        <%=link_to @user.name, user_path(@user) %> /
         <%= link_to @repo.name, user_repo_posts_path(@user, @repo.slug) %>
     </h1>
     <p><%= @repo.description %></p>
-    <% if action_name != "new" %>
-        <% if can? :create, Post.new(user_id: @user.id) %>
-            <%= link_to new_user_repo_post_path, class: "btn btn-sm btn-primary" do %>
-                <%= fa_icon "file" %> Add a new post
-            <% end %>
+    <% if can? :destroy, @repo then %>
+      <%= button_to user_repo_path(@user, @repo),
+        method: "delete",
+        class: "btn btn-danger btn-sm",
+        confirm: "Are you sure you want to delete this post?" do %>
+        <%= fa_icon "trash-o" %>
+        Delete Repo
+      <% end %>
+    <% end %>
+    <% if can? :create, Post.new(user_id: @user.id) %>
+        <%= link_to new_user_repo_post_path, class: "btn btn-sm btn-primary" do %>
+            <%= fa_icon "file" %> Add a new post
         <% end %>
     <% end %>
 <% end %>
