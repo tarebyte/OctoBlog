@@ -25,7 +25,7 @@
 
     <small>
         <time datetime="<%= post.created_at.in_time_zone('Eastern Time (US & Canada)') %>"
-        title="<%= post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime "%F %T" %>">
+        title="<%= post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime "%F %l:%M:%S %p %Z" %>">
             <%= post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime "%F" %>
         </time>
             by

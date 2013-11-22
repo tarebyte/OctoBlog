@@ -1,11 +1,13 @@
 <% replace :sidebar do %>
   <% if !current_user || current_user.id != @user.id %>
-    <%= link_to @repo.url, target: "_blank",
+    <%= link_to @user.github, target: "_blank",
       class: "btn btn-primary btn-large btn-block" do %>
-      <%= fa_icon "github-alt" %> Fork me on GitHub
+      <%= fa_icon "github-alt" %> Find me on GitHub
     <% end %>
   <% end %>
-  <%= render partial: "posts/sidebar_listing", locals: {object: @repo} %>
+
+  <%= render partial: "posts/sidebar_listing", locals: {object: @user} %>
   <%= render partial: "repos/sidebar_listing", locals: {user: @user} %>
+
 <% end %>
 

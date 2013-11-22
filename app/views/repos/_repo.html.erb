@@ -1,7 +1,7 @@
 <div class="repo">
     <h2>
         <%= link_to user_repo_posts_path(repo.user.slug, repo.slug) do %>
-            <%= fa_icon "book" %> <%= repo.name%>
+            <%= fa_icon "book" %> <%= repo.user.username %>/<%= repo.name%>
         <% end %>
     </h2>
     <p class='stats'>

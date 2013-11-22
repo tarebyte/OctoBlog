@@ -1,3 +1,5 @@
+<%= title "#{@user.name}" %>
+
 <% replace :page_header do %>
   <h1>
     <%= link_to image_tag(@user.avatar, size: "60",
@@ -6,9 +8,11 @@
     %>
     <%=link_to @user.name, user_path(@user) %>
   </h1>
-    <% if can? :create, Repo.new(user_id: @user.id) %>
-        <%= link_to new_user_repo_path, class: "btn btn-sm btn-primary" do %>
-            <%= fa_icon "file" %> Add a new repo
-        <% end %>
-    <% end %>
+  <% if action_name != "new" %>
+      <% if can? :create, Repo.new(user_id: @user.id) %>
+          <%= link_to new_user_repo_path, class: "btn btn-sm btn-primary" do %>
+              <%= fa_icon "file" %> Add a new repo
+          <% end %>
+      <% end %>
+  <% end %>
 <% end %>

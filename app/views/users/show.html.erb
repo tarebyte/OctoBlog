@@ -14,21 +14,7 @@
 
 <% end %>
 <% replace :sidebar do %>
-    <h2>Your Repos</h2>
-    <div class="list-group">
-        <%= link_to new_user_repo_path(@user),
-            class: "list-group-item" do %>
-            <%= fa_icon "plus" %> Add a repo
-        <% end %>
-        </li>
-        <% if @user.repos.count > 0 %>
-            <% @user.repos.each do |repo| %>
-                <%= link_to repo.name, user_repo_posts_path(@user, repo),
-                    class: "list-group-item" %>
-            <% end %>
-        <% end %>
-
-    </div>
+    <%= render partial: "repos/sidebar_listing", locals: {user: current_user} %>
 <% end %>
 
 <%= append :javascript do %>

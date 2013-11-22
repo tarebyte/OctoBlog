@@ -1,0 +1,21 @@
+<% if current_user == user %>
+    <h2>Your <%= pluralize(user.repos.count, "Project") %></h2>
+<% else %>
+    <h2><%=user.name %>'s <%=pluralize(user.repos.count, "Project") %></h2>
+<% end %>
+
+    <div class="list-group">
+        <% if current_user == user %>
+            <%= link_to new_user_repo_path(@user),
+                class: "list-group-item" do %>
+                <%= fa_icon "plus" %> Add a repo
+            <% end %>
+        <% end %>
+        <% if @user.repos.count > 0 %>
+            <% @user.repos.each do |repo| %>
+                <%= link_to repo.name, user_repo_posts_path(@user, repo),
+                    class: "list-group-item" %>
+            <% end %>
+        <% end %>
+
+    </div>
