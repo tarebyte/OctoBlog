@@ -6,7 +6,7 @@
                 class: "img-thumbnail"
             ), @user.avatar
         %>
-        <%=link_to @user.name, user_repos_path(@user) %> /
+        <%=link_to @user.name, user_path(@user) %> /
         <%= link_to @repo.name, user_repo_posts_path(@user, @repo.slug) %>
     </h1>
     <p><%= @repo.description %></p>

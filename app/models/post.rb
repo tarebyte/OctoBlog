@@ -15,5 +15,5 @@ class Post
   slug :title, :scope => :author
 
   t_belongs_to :user
-  belongs_to :repo, dependent: :delete
+  belongs_to :repo
 end

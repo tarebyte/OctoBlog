@@ -69,9 +69,13 @@ class ReposController < ApplicationController
   # DELETE /repos/1.json
   def destroy
 
+    # Mongoid dependent :destroy not working
+    # will come back to this
+    @repo.posts.destroy
     @repo.destroy
+
     respond_to do |format|
-      format.html { redirect_to user_repos_path }
+      format.html { redirect_to user_path(@user) }
       format.json { head :no_content }
     end
   end
